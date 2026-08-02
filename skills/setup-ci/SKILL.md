@@ -5,7 +5,7 @@ description: GitHub Actions の CI を導入する。検証(lint・型検査・�
 
 CI を次の手順で導入する。
 
-1. `.github/workflows/ci.yml` を [template.yml](template.yml)、`.github/dependabot.yml` を [dependabot.yml](dependabot.yml) を雛形として追加し、プルリクエストで登録する。検証コマンドはリポジトリの構成に合わせる。
+1. [template.yml](template.yml) を雛形に `.github/workflows/ci.yml` を追加し、プルリクエストで登録する。検証コマンドはリポジトリの構成に合わせる。
 2. プルリクエスト上で CI の通過を確認し、マージする。
 3. CI 必須のルールセットを次のコマンドで追加する。
 
