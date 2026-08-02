@@ -1,5 +1,5 @@
 ---
-name: readme-update
+name: update-readme
 description: README.md の変更を単独のプルリクエストで行う。README の修正・追記を行うときに使用する。
 ---
 
