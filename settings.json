@@ -29,6 +29,9 @@
       "Bash(gh pr merge:*)",
       "Bash(npm:*)",
       "Bash(yarn:*)",
+      "Bash(pnpm init:*)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm remove:*)",
       "Read(**/.env)",
       "Read(**/.env.local)",
       "Read(**/.env.*.local)",
@@ -58,7 +61,6 @@
       "Bash(gh pr edit:*)",
       "Bash(gh issue create:*)",
       "Bash(gh issue edit:*)",
-      "Bash(pnpm add:*)",
       "Bash(pnpm dlx:*)",
       "Bash(pnpm install:*)",
       "Bash(pnpm dev:*)"
