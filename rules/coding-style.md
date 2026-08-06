@@ -13,18 +13,18 @@ Lint ルールの無効化は、対象ファイル・対象ルールを限定し
 
 言語の使い分けは CLAUDE.md「記述言語」による。
 
-| 対象 | 書式 | 品詞・語順 | 出典 |
-| --- | --- | --- | --- |
-| 変数・引数・プロパティ | `camelCase` | 修飾語 + 名詞 | - |
-| 真偽値 | `camelCase` | `is`・`has` + 状態 | - |
-| 定数 | `UPPER_CASE` | 名詞 | - |
-| 関数 | `camelCase` | 動詞 + 目的語。動詞は `get`・`list`・`create`・`update`・`delete` | - |
-| 型・クラス・enum | `PascalCase` | 名詞 | - |
-| コンポーネント | `PascalCase` | 名詞 | React 公式 |
-| フック | `camelCase` | `use` + 名詞 | React 公式 |
-| state の設定関数 | `camelCase` | `set` + state 名 | React 公式 |
-| イベントハンドラ | `camelCase` | プロパティ: `on` + 事象、実装: `handle` + 事象 | React 公式 |
-| ファイル名 | `kebab-case` | 主名称 | - |
+| 対象 | 書式 | 品詞・語順 |
+| --- | --- | --- |
+| 変数・引数・プロパティ | `camelCase` | 修飾語 + 名詞 |
+| 真偽値 | `camelCase` | `is`・`has` + 状態 |
+| 定数 | `UPPER_CASE` | 名詞 |
+| 関数 | `camelCase` | 動詞 + 目的語。動詞は `get`・`list`・`create`・`update`・`delete` |
+| 型・クラス・enum | `PascalCase` | 名詞 |
+| コンポーネント | `PascalCase` | 名詞 |
+| フック | `camelCase` | `use` + 名詞 |
+| state の設定関数 | `camelCase` | `set` + state 名 |
+| イベントハンドラ | `camelCase` | プロパティ: `on` + 事象、実装: `handle` + 事象 |
+| ファイル名 | `kebab-case` | 主名称 |
 
 フレームワーク固有の名称は公式仕様による。外部ライブラリ由来の名前には適用しない。
 
