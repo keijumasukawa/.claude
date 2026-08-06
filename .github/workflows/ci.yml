@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: JSON の構文検査
+        run: |
+          for f in $(git ls-files '*.json'); do
+            node -e "JSON.parse(require('fs').readFileSync('$f','utf8'))"
+          done
+      - name: シェルスクリプトの構文検査
+        run: |
+          for f in $(git ls-files '*.sh'); do
+            bash -n "$f"
+          done
+      - name: YAML の構文検査
+        run: |
+          for f in $(git ls-files '*.yml' '*.yaml'); do
+            python3 -c "import sys, yaml; yaml.safe_load(open('$f'))"
+          done
