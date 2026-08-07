@@ -25,7 +25,7 @@
 | [文書規程](rules/documentation.md) | 記述言語、文体、文書の構造 |
 | [コーディング規程](rules/coding-style.md) | 命名、型の設計、設計、コメント |
 | [実装方針規程](rules/implementation.md) | 参照仕様の確認、雛形、依存関係、バージョン |
-| [Git 運用規程](rules/git.md) | ブランチ、コミット、プルリクエスト、リリース |
+| [リポジトリ運用規程](rules/repository.md) | ブランチ、コミット、プルリクエスト、ワークフロー、リリース |
 | [作業手順規程](rules/workflow.md) | 承認、Issue との紐付け、実行主体 |
 | [セキュリティ規程](rules/security.md) | 機密情報、環境変数、認可 |
 | [テスト規程](rules/testing.md) | 方針、配置、テストデータ、カバレッジ |
