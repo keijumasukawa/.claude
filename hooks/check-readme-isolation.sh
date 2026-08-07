@@ -12,7 +12,7 @@ run_git() {
   if [ -n "$target" ]; then git -C "$target" "$@"; else git "$@"; fi
 }
 
-if printf '%s' "$input" | grep -Eq 'git ([^"|;&]* )?add [^"|;&]*(-A|--all)|git ([^"|;&]* )?add +\.[" ;&]|commit[^"|;&]* (-a|-am|--all)'; then
+if printf '%s' "$input" | grep -Eq 'git ([^"|;&]* )?add [^"|;&]*(-A|--all)([ "]|$)|git ([^"|;&]* )?add +\.[" ;&]|commit[^"|;&]* (-a|-am|--all)([ "]|$)'; then
   files=$(run_git status --porcelain 2>/dev/null | sed 's/^...//; s/.* -> //')
 else
   files=$(run_git diff --cached --name-only 2>/dev/null)
