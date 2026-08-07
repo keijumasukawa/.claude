@@ -12,11 +12,6 @@ updates:
       - dependency-name: "*"
         update-types:
           - version-update:semver-major
-    groups:
-      minor-and-patch:
-        update-types:
-          - minor
-          - patch
   - package-ecosystem: npm
     directory: /
     schedule:
@@ -29,8 +24,3 @@ updates:
       - dependency-name: "*"
         update-types:
           - version-update:semver-major
-    groups:
-      minor-and-patch:
-        update-types:
-          - minor
-          - patch
