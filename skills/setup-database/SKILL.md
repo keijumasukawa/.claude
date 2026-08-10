@@ -8,8 +8,7 @@ description: データベースの書き込みワークフローを導入する�
 1. [migrate-database.yml](migrate-database.yml) を雛形に `.github/workflows/migrate-database.yml` を追加する。
 2. [seed-database.yml](seed-database.yml) を雛形に `.github/workflows/seed-database.yml` を追加する。
 3. 接続情報をリポジトリのシークレットに登録する。登録は利用者が行う。
-4. プルリクエストで登録し、CI の通過を確認してマージする。
+4. プルリクエストで登録する。
 
 - 実行は Actions タブの `Run workflow` による。
-- 同一のデータベースへ書き込むワークフローは、`concurrency` の `group` を共通にする。
 - パッケージの指定及び実行コマンドは、プロジェクトの構成に合わせる。

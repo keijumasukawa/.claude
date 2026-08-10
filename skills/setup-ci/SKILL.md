@@ -6,7 +6,7 @@ description: GitHub Actions の CI を導入する。検証(lint・型検査・�
 CI を次の手順で導入する。
 
 1. [ci.yml](ci.yml) を雛形に `.github/workflows/ci.yml` を追加し、プルリクエストで登録する。検証コマンドはリポジトリの構成に合わせる。
-2. プルリクエスト上で CI の通過を確認し、マージする。
+2. プルリクエストをマージする。
 3. CI 必須のルールセットを次のコマンドで追加する。
 
 ```bash
@@ -30,4 +30,3 @@ EOF
 ```
 
 - pnpm のバージョンは package.json の `packageManager`、Node.js のバージョンは `engines.node` による。記載がなければ追加する。
-- CI にシークレットを要する工程を含めない。Dependabot のプルリクエストではシークレットが渡らず、マージ不能になるためである。
