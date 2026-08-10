@@ -25,3 +25,13 @@ jobs:
           for f in $(git ls-files '*.yml' '*.yaml'); do
             python3 -c "import sys, yaml; yaml.safe_load(open('$f'))"
           done
+      - name: Bats の導入
+        id: setup-bats
+        uses: bats-core/bats-action@4.0.0
+      - name: フックのテスト
+        shell: bash
+        env:
+          BATS_LIB_PATH: ${{ steps.setup-bats.outputs.lib-path }}
+          TERM: xterm
+          LC_ALL: C.UTF-8
+        run: bats test/
