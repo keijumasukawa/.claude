@@ -4,44 +4,70 @@ setup() {
   HOOK="$BATS_TEST_DIRNAME/../hooks/check-isolation.sh"
   REPO="$BATS_TEST_TMPDIR/repo"
   mkdir -p "$REPO/.github/workflows"
-  git -C "$REPO" init -q
+  git -C "$REPO" init -q -b main
   git -C "$REPO" config user.email you@example.com
   git -C "$REPO" config user.name tester
   printf 'x\n' > "$REPO/README.md"
   printf 'x\n' > "$REPO/CLAUDE.md"
+  printf 'x\n' > "$REPO/other.md"
   printf 'x\n' > "$REPO/.github/workflows/ci.yml"
   printf '{}\n' > "$REPO/tsconfig.json"
+  git -C "$REPO" add -A
+  git -C "$REPO" commit -q -m x
+  git -C "$REPO" switch -q -c work
 }
 
 input() {
   printf '{"tool_input":{"command":"git -C %s commit -m x"}}' "$REPO"
 }
 
-stage() {
-  git -C "$REPO" reset -q
-  git -C "$REPO" add "$@"
+change() {
+  local file
+  for file in "$@"; do
+    printf 'y\n' >> "$REPO/$file"
+    git -C "$REPO" add "$file"
+  done
+}
+
+commit_change() {
+  change "$1"
+  git -C "$REPO" commit -q -m x
 }
 
 @test "同一の分類のみの場合は通過する" {
-  stage README.md
+  change README.md
   run bash "$HOOK" <<< "$(input)"
   [ -z "$output" ]
 }
 
 @test "README と他のファイルの混在を拒否する" {
-  stage README.md CLAUDE.md
+  change README.md CLAUDE.md
   run bash "$HOOK" <<< "$(input)"
   [[ "$output" == *'"permissionDecision":"deny"'* ]]
 }
 
 @test "ワークフローの定義と他のファイルの混在を拒否する" {
-  stage .github/workflows/ci.yml CLAUDE.md
+  change .github/workflows/ci.yml CLAUDE.md
   run bash "$HOOK" <<< "$(input)"
   [[ "$output" == *'"permissionDecision":"deny"'* ]]
 }
 
 @test "検査の設定と他のファイルの混在を拒否する" {
-  stage tsconfig.json CLAUDE.md
+  change tsconfig.json CLAUDE.md
   run bash "$HOOK" <<< "$(input)"
   [[ "$output" == *'"permissionDecision":"deny"'* ]]
+}
+
+@test "作業ブランチの先行するコミットとの混在を拒否する" {
+  commit_change .github/workflows/ci.yml
+  change CLAUDE.md
+  run bash "$HOOK" <<< "$(input)"
+  [[ "$output" == *'"permissionDecision":"deny"'* ]]
+}
+
+@test "作業ブランチが同一の分類のみの場合は通過する" {
+  commit_change CLAUDE.md
+  change other.md
+  run bash "$HOOK" <<< "$(input)"
+  [ -z "$output" ]
 }
