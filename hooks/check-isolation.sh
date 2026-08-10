@@ -6,7 +6,7 @@ input=$(cat)
 
 is_git_commit "$input" || exit 0
 
-files=$(list_commit_files "$input")
+files=$(printf '%s\n%s\n' "$(list_commit_files "$input")" "$(list_branch_files "$input")" | grep -v '^$' | sort -u)
 [ -z "$files" ] && exit 0
 
 classify() {

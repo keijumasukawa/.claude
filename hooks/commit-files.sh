@@ -24,3 +24,15 @@ list_commit_files() {
 
   printf '%s\n' "$files" | grep -v '^$'
 }
+
+list_branch_files() {
+  local root base
+  root=$(commit_root "$1")
+
+  base=$(git -C "$root" rev-parse --verify --quiet origin/main)
+  [ -z "$base" ] && base=$(git -C "$root" rev-parse --verify --quiet main)
+  [ -z "$base" ] && return 0
+  git -C "$root" rev-parse --verify --quiet HEAD > /dev/null || return 0
+
+  git -C "$root" diff --name-only "$base...HEAD" 2>/dev/null
+}
