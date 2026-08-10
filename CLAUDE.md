@@ -23,6 +23,6 @@
 - [文書規程](rules/documentation.md)
 - [コーディング規程](rules/code-style.md)
 - [実装方針規程](rules/implementation.md)
-- [リポジトリ運用規程](rules/repository.md)
+- [ワークフロー規程](rules/workflows.md)
 - [セキュリティ規程](rules/security.md)
 - [テスト規程](rules/testing.md)
