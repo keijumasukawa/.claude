@@ -23,5 +23,5 @@ kinds=$(while IFS= read -r file; do classify "$file"; printf '\n'; done <<< "$fi
 [ "$(printf '%s\n' "$kinds" | grep -c .)" -le 1 ] && exit 0
 
 detail=$(printf '%s\n' "$kinds" | awk 'NR>1 { printf "・" } { printf "%s", $0 }')
-printf '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny","permissionDecisionReason":"%s が同一コミットに含まれている。リポジトリ運用規程「プルリクエスト」により、対象ごとに分離する。"}}' "$detail"
+printf '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny","permissionDecisionReason":"%s が同一コミットに含まれている。ワークフロー規程「プルリクエスト」により、対象ごとに分離する。"}}' "$detail"
 exit 0
