@@ -27,6 +27,6 @@ readme=$(printf '%s\n' "$files" | grep -cx 'README.md')
 others=$(printf '%s\n' "$files" | grep -cvx 'README.md')
 
 if [ "$readme" -gt 0 ] && [ "$others" -gt 0 ]; then
-  printf '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny","permissionDecisionReason":"README.md と他のファイルが同一コミットに含まれています。Git 運用規程「README の例外」に従い、README は docs/readme ブランチの単独プルリクエストで分離してください。"}}'
+  printf '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny","permissionDecisionReason":"README.md と他のファイルが同一コミットに含まれている。リポジトリ運用規程「README の例外」により、README は docs/readme ブランチの単独プルリクエストで分離する。"}}'
 fi
 exit 0
