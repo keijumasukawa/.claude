@@ -1,6 +1,6 @@
 # .claude
 
-Claude Code の利用者スコープ設定を管理するリポジトリ。`~/.claude` に配置する。
+Claude Code の利用者スコープ設定を管理し、`~/.claude` に配置するリポジトリ。
 
 ## 目的
 
