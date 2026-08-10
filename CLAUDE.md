@@ -20,11 +20,9 @@
 
 ## 規程
 
-| 規程 | 対象 |
-| --- | --- |
-| [文書規程](rules/documentation.md) | 記述言語、文体、文書の構造 |
-| [コーディング規程](rules/coding-style.md) | 命名、型の設計、設計、コメント |
-| [実装方針規程](rules/implementation.md) | 参照仕様の確認、雛形、依存関係、バージョン |
-| [リポジトリ運用規程](rules/repository.md) | ブランチ、Issue、コミット、プルリクエスト、ワークフロー、リリース |
-| [セキュリティ規程](rules/security.md) | 機密情報、環境変数、認可 |
-| [検証規程](rules/verification.md) | 方針、配置、テストデータ、カバレッジ |
+- [文書規程](rules/documentation.md)
+- [コーディング規程](rules/coding-style.md)
+- [実装方針規程](rules/implementation.md)
+- [リポジトリ運用規程](rules/repository.md)
+- [セキュリティ規程](rules/security.md)
+- [検証規程](rules/verification.md)
