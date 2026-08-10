@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# git commit 実行前に文書の表記と文体を検査し、文書規程に反する語を含む場合はコミットを拒否する
-# 検出語は、本スクリプトを検査対象に含められるよう notation-rules.tsv に置く
 
 input=$(cat)
 

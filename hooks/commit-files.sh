@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# git commit を実行する Bash ツール入力から、コミット対象のファイルを求める
-# 入力 JSON は追加ツールへの依存を避けるため文字列検索で判定する
 
 is_git_commit() {
   printf '%s' "$1" | grep -Eq 'git ([^"|;&]* )?commit'
