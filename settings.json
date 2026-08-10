@@ -14,6 +14,13 @@
             "shell": "bash",
             "timeout": 10,
             "statusMessage": "README の分離を検査中"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$HOME/.claude/hooks/check-notation.sh\"",
+            "shell": "bash",
+            "timeout": 10,
+            "statusMessage": "文書の表記を検査中"
           }
         ]
       }
