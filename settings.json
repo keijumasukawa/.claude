@@ -10,10 +10,10 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$HOME/.claude/hooks/check-readme-isolation.sh\"",
+            "command": "bash \"$HOME/.claude/hooks/check-isolation.sh\"",
             "shell": "bash",
             "timeout": 10,
-            "statusMessage": "README の分離を検査中"
+            "statusMessage": "対象の分離を検査中"
           },
           {
             "type": "command",
