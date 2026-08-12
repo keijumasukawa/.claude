@@ -5,4 +5,4 @@ description: 依存関係の自動更新を導入する。Dependabot による�
 
 依存関係の自動更新を次の手順で導入する。前提: CI が導入済みであること。
 
-1. [dependabot.yml](dependabot.yml) を雛形に `.github/dependabot.yml` を追加し、プルリクエストを作成する。
+1. [dependabot.yml](dependabot.yml) をテンプレートに `.github/dependabot.yml` を追加し、プルリクエストを作成する。
