@@ -12,6 +12,9 @@ setup() {
   printf 'x\n' > "$REPO/other.md"
   printf 'x\n' > "$REPO/.github/workflows/ci.yml"
   printf '{}\n' > "$REPO/tsconfig.json"
+  printf 'x\n' > "$REPO/.prettierignore"
+  printf '{}\n' > "$REPO/package.json"
+  printf 'x\n' > "$REPO/pnpm-lock.yaml"
   git -C "$REPO" add -A
   git -C "$REPO" commit -q -m x
   git -C "$REPO" switch -q -c work
@@ -63,6 +66,36 @@ commit_change() {
   change CLAUDE.md
   run bash "$HOOK" <<< "$(input)"
   [[ "$output" == *'"permissionDecision":"deny"'* ]]
+}
+
+@test "整形の対象範囲の設定を検査の設定として扱う" {
+  change .prettierignore CLAUDE.md
+  run bash "$HOOK" <<< "$(input)"
+  [[ "$output" == *'"permissionDecision":"deny"'* ]]
+}
+
+@test "検査の設定と補助ファイルの同居を通過させる" {
+  change tsconfig.json .prettierignore package.json pnpm-lock.yaml
+  run bash "$HOOK" <<< "$(input)"
+  [ -z "$output" ]
+}
+
+@test "その他のファイルと補助ファイルの同居を通過させる" {
+  change CLAUDE.md package.json pnpm-lock.yaml
+  run bash "$HOOK" <<< "$(input)"
+  [ -z "$output" ]
+}
+
+@test "README と補助ファイルの混在を拒否する" {
+  change README.md package.json
+  run bash "$HOOK" <<< "$(input)"
+  [[ "$output" == *'"permissionDecision":"deny"'* ]]
+}
+
+@test "補助ファイルのみの場合は通過する" {
+  change package.json pnpm-lock.yaml
+  run bash "$HOOK" <<< "$(input)"
+  [ -z "$output" ]
 }
 
 @test "作業ブランチが同一の分類のみの場合は通過する" {
