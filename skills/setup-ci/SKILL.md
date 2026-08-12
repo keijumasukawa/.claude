@@ -5,7 +5,7 @@ description: GitHub Actions の CI を導入する。静的テストと動的テ
 
 CI を次の手順で導入する。
 
-1. [ci.yml](ci.yml) を雛形に `.github/workflows/ci.yml` を追加し、プルリクエストを作成する。静的テストと動的テストのコマンドはリポジトリの構成に合わせる。
+1. [ci.yml](ci.yml) をテンプレートに `.github/workflows/ci.yml` を追加し、プルリクエストを作成する。静的テストと動的テストのコマンドはリポジトリの構成に合わせる。
 2. マージ後、CI 必須のルールセットを次のコマンドで追加する。
 
 ```bash
